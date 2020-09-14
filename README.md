@@ -1,13 +1,13 @@
 To use these files:
 
-git pull git@github.com:bltierney/dotfiles.git
+git clone git@github.com:bltierney/dotfiles.git
 cp cshrc $HOME/.cshrc
 cp exrc $HOME/.exrc
 ln -s $HOME/.cshrc $HOME/.tcshrc
 
 
-Below is the orginal README from LBL computing services
-=======================================================
+Below is the orginal README from LBL computing services. Several of the files are not included here.
+===================================================================================================
 The environ Files
 -----------------
 
