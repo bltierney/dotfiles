@@ -1,0 +1,31 @@
+#!/bin/csh -f
+#
+set lmds=y
+#set echo
+#unset echo
+
+if ( -x /usr/ucb/whoami ) then
+	set euser = "`/usr/ucb/whoami`"
+else
+	set euser = "`whoami`"
+endif
+
+if ( "$euser" == "root" ) then
+	set path = ( /etc /usr/etc /sbin /usr/sbin $path )
+endif
+
+echo_source $HOME/.rc/env
+
+if ($interactive) then
+
+	echo_source $HOME/.rc/aliases
+
+	if ( -e $HOME/.rc/dirs ) then
+		echo_source $HOME/.rc/dirs
+	endif
+endif
+
+if ( -e $HOME/.rc/user_fini ) then
+	echo_source $HOME/.rc/user_fini
+endif
+

@@ -1,0 +1,58 @@
+# . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+# list of aliases *******
+#
+alias gw ssh -A sunn-gw.es.net -l tierney
+alias p ping 8.8.8.8
+alias fixLF "cat \!* | tr '\r' '\n' > fixed.txt"
+alias ntp-check ntpdc -s
+alias df df -h
+alias passwd yppasswd
+alias nm nm -o             
+alias grep grep -i
+alias rsh ssh 
+alias cp cp -i
+alias meonly 'chmod og-rwx \!*'
+alias allread 'chmod og+r \!*'
+alias mv 'mv -i'
+alias rm 'rm -i'
+# use tcsh builtin ls
+alias ls 'ls-F'
+alias la 'ls -AF'
+alias ll 'ls -lF'
+alias c clear
+alias run  source 
+alias tail 'tail -50'
+alias del 'rm -i '
+alias clean 'rm -f *~ *.BAK *.bak core .*~ '
+alias su 'su -'
+
+# this alias remove all core and *.BAK *~ from the current directory on down
+alias cleanall 'find . \( -name "*.BAK" -o -name "*.bak" -o -name ".auto" -o -name ".recover" -o -name "*~" -o -name "core" -o -name "*%%" \)  -print -exec rm {} \; '
+# this alias remove all *.o files more 
+alias cleanall.o 'find . \( -name "*.o" \) -print -exec rm {} \; '
+alias clean.frame 'find . -name "*.backup.fm" -o -name "*.backup" -print -exec rm {} \; '
+
+alias h  history 
+
+#typo help
+alias mkae make
+alias mroe more
+
+# directory commands
+alias cd 'cd \!*;echo $cwd'   #display directory name upon change
+alias .  'echo $cwd'
+alias .. 'set dot = $cwd; cd ..'
+alias ,  'cd $dot'
+alias pwd 'echo $cwd'
+alias pdw 'echo $cwd'
+
+# find the named file anywhere from here down e.g.  'findfile *.memo'
+alias findfile 'find . -name "\!*" -print'
+# find all files modified in the past N days
+alias findmod 'find . -mtime -"\!*" -print'
+# find all files created in the past N days
+alias findnew 'find . -ctime -"\!*" -print'
+alias grepdown 'find . -print -exec grep -i "\!*" {} \;'
+alias fgrepdownv 'find . -print -exec fgrep -i "\!*" {} \;'
+alias fgrepdown 'find . -exec fgrep -i "\!*" {} \; -exec echo -n "           " \; -exec echo "{}" \;'
+

@@ -1,0 +1,8 @@
+# this must be after aliases are loaded
+
+# set window size for vi, etc
+#if ($?prompt) then
+#	echo "resizing term.."; 
+#        set noglob; eval `resize`; unset noglob
+#endif
+ 

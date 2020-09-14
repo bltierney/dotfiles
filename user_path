@@ -1,0 +1,42 @@
+
+#set echo
+
+set my_arch = `uname \-sr`
+setenv ARCH "$my_arch"
+set my_proc = `uname \-p`
+
+#setenv  GLOBUS_LOCATION /usr
+#setenv  GLOBUS_USER_HOME $HOME
+
+#setenv LD_LIBRARY_PATH .:/usr/local/lib:/usr/lib
+
+switch ("$ARCH")
+
+case "BSD/OS*":
+case "FreeBSD*":
+    if ($?prompt) echo "  This is a BSD System"
+    set path = (. $HOME/bin.FreeBSD $HOME/scripts \
+         /usr/contrib/bin /usr/local/esnet/bin \
+	 /bin /usr/bin /etc /usr/etc /usr/sbin /usr/ucb \
+         /sbin /usr/X11/bin /usr/bin/X11 /usr/local/bin /usr/local/sbin)
+    breaksw
+
+case "Linux*":
+    if ($?prompt) echo "This is a Linux system "
+    set path = ($PATH . $HOME/scripts $HOME/bin \
+         /usr/bin /usr/local/sbin /usr/local/bin \
+         /bin /etc /usr/etc /usr/sbin /usr/ucb \
+         /sbin /usr/X11/bin /usr/bin/X11 )
+    breaksw
+
+default:
+    if ($?prompt) echo "This OS is unknown"
+    set path = (. $HOME/scripts /sw/bin \
+         /usr/local /usr/local/bin /usr/local/sbin \
+	 /bin /usr/bin /etc /usr/etc /usr/sbin /usr/ucb \
+         /sbin /usr/X11/bin /usr/bin/X11 )
+
+    breaksw
+endsw
+ 
+

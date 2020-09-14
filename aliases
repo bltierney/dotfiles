@@ -1,0 +1,40 @@
+#
+# $Id: aliases,v 1.8 1994/08/24 18:23:01 sls Exp $
+#
+# This file is source-ed only if the shell is interactive.
+#
+
+set host = `uname -n`
+
+if ($?version) then
+	# version is a tcsh-specific variable -- these are
+	# tcsh settings
+	if ($?autologout) then
+		unset autologout
+	endif
+	if ( "$euser" == "root" ) then
+		set prompt = "$USER@$host(\!)#" 
+	else
+		set prompt = "$USER@$host(\!)>" 
+	endif
+else
+	# these are csh settings
+	if ( "$euser" == "root" ) then
+		set prompt = "$USER@$HOST(\!)#" 
+	else
+		set prompt = "$USER@$HOST(\!)>" 
+	endif
+endif
+
+set history = 200
+set savehist = 50
+
+alias ls 'ls -FC \!*'
+alias dir 'ls -lagFs \!*'
+alias title 'echo -n "]0;"\!*""'
+alias su /bin/su
+alias termset 'set noglob; eval `tset -sn -k -e \?vt100`; unset noglob'
+
+if (-e $HOME/.rc/user_aliases) then
+	echo_source $HOME/.rc/user_aliases
+endif

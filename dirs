@@ -1,0 +1,97 @@
+#!/bin/csh
+#set echo
+# .dirs - directory manager software
+# keeps up to NDMAX active directories (addressable as $1 through $9)
+# can be saved automatically across session boundaries
+
+# When .drs gets screwed up, remove it.
+
+set NDMAX = 35
+# The variables V1-V6 are used to delay variable substitution by the shell.
+set V1 = '$i'
+set V2 = '"*"'
+set V3 = '" "'
+set V4 = '$NF'
+set V5 = '$argv' 
+set V6 = '$wd' 
+set V7 = '$NF'
+set V8 = '"$newdir"'
+
+# cd - change working directory, add to active set (slower)
+alias cd 'chdir \!* ;\\
+	set owd = $wd;\\
+	set newdir = ($argv `dirs -l`);\\
+	set wd = (`getnum`);\\
+	if ( "$wd" == "$#newdir") set argv = ($newdir);\\
+	if($TERM == "xterm" || $TERM == "xterm-color") echo "]2;"$host": `dirs`"; \\
+	wd'
+
+# acd - add directory (old cd (faster))
+alias acd 'chdir \!* ; set argv = ($argv `pwd`);\\
+	set owd = $wd; set wd = $#argv; wd'
+
+# cwd - change working directory
+alias cwd 'set owd = $wd; \\
+	set wd = \!*; chdir $argv[$wd]; wd; \\
+	if($TERM == "xterm" || $TERM == "xterm-color") echo "]2;"$host": `dirs`" '
+
+# n - change back to active directory n = (1, NDMAX)
+# the following loop defines commands "1" ... "NDMAX"
+set i = 1
+while ($i <= $NDMAX)
+alias $i "cwd $i"
+@ i++
+end
+
+# +/-  move down/up one directory
+alias - 'set owd = $wd; @ wd = $wd - ($wd > 1) ; cwd $wd'
+alias + 'set owd = $wd; @ wd = $wd + ($wd < $#argv) ; cwd $wd'
+alias back 'set t = $owd; cwd $t' # previous directory
+
+# wd - print current working directory
+alias wd 'echo $wd"*" $argv[$wd]'
+
+# drs - list all active directories
+alias drs "(echo $V5 $V6 |\\
+awk '{for (i=1;i<NF;i++){if(i == $V4)print i $V2,$V1; else print i $V3,$V1}}')"
+
+# xd - delete active directory
+alias xd 'if ("$wd" == \!*) echo "cant, $wd is current directory" ;\\
+	if ("$wd" != \!*) set argv = (`nw \!*`);\\
+	if ("\!*" > 0 && "$wd" > "\!*") @ wd--;\\
+	if ("$owd" == \!*) set owd = $wd;\\
+	if ("\!*" > 0 && "$owd" > \!* && "$owd" != "$wd") @ owd--'
+
+# nw - list new active directory set (needed for xd)
+alias nw "echo $V5 | awk '{for (i=1;i<=NF;i++) if (i != \!*) print $V1}'"
+
+# sf - save environment in file
+alias sf 'echo "$wd" "$owd" "$argv" >! \!*'
+
+# rf - restore environment from local file
+alias rf 'set argv = (`cat \!*`) ; restarg' 
+
+# re - restore environment from remote host
+alias re 'set argv = (`rsh \!* cat ~/.drs` $argv); restarg'
+
+# restarg - restore argv, wd, owd
+alias restarg 'set wd = $argv[1];\\
+	shift argv;\\
+	set owd = $argv[1];\\
+	shift argv;\\
+	chdir $argv[$wd];\\
+	drs'
+
+# getnum - get number of given directory
+alias getnum "echo $V8 |\\
+ awk '{for (i=1;i<=NF;i++) if ($V7 == $V1) {print i; break}}'"
+
+# initial directory setup (get from .drs if possible)
+if (-e $HOME/.drs) then
+	rf $HOME/.drs
+else
+	set wd = 1
+	cd
+endif
+
+# end active directory code

@@ -1,0 +1,16 @@
+#
+# $Id: env,v 1.7 1995/02/11 00:41:25 sls Exp $
+#
+# This file is source-ed regardless if the shell is interactive or not.
+#
+
+# group write permision
+umask 002
+
+if ( ! $?HOST ) then
+	setenv HOST "`uname -n`"
+endif
+
+if (-e ~/.rc/user_env) then
+	echo_source ~/.rc/user_env
+endif

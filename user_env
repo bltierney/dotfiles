@@ -1,0 +1,23 @@
+#set echo
+#
+
+setenv NAME "Brian Tierney"
+setenv PAGER more
+
+set my_arch = `uname \-s`
+setenv ARCH "$my_arch"
+
+set history=100
+set savehist=100
+set histhost = "`uname -n`"
+set histfile=(~/.history_"$histhost")
+
+set filec    # turn on filename completion
+set fignore = (.o)
+set ignoreeof
+set noclobber
+set notify
+
+# increase max descriptor limit
+# limit descriptors 128
+
