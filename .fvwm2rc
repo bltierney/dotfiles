@@ -1,0 +1,554 @@
+
+##########################################################################
+# Assorted paths to important files
+#
+# ModulePath is a colon-separated list, just like regular unix PATH
+ModulePath	/usr/local/lib/fvwm
+
+# Pixmap and icon paths are also colon separated lists
+#PixmapPath /usr/local/include/X11/pixmaps
+PixmapPath /usr/local/lib/fvwm/pixmaps:/usr/local/lib/fvwm/3dpixmaps
+IconPath /usr/local/include/X11/pixmaps:/usr/local/lib/fvwm/icons
+
+# if dont want to waste screen space on icons
+#PixmapPath 
+#IconPath 
+
+###########################################################################
+# Set up the major operating modes
+#
+#############################################################################
+# I find scrolling off the edge like that annoying, use the pager
+EdgeScroll 0 0
+# flip by whole pages on the edge of the screen.
+#EdgeScroll 100 100
+
+
+# Thresh in a 50 pixel move resistance
+EdgeResistance 250 50
+
+# Time for a single click in ms
+ClickTime 150
+
+# Set windows to auto-raise after 400 milliseconds
+Module FvwmAuto 400
+
+############################################################################
+# set up the colors
+HilightColor	yellow #b43060
+
+############################################################################
+# Now the fonts - one for icons, another for window titles
+WindowFont		-*-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*
+#IconFont		-*-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+IconFont		-adobe-helvetica-bold-r-*-*-*-100-*-*-*-*-*-*
+
+###########################################################################
+# Set up the virtual desktop and pager
+
+#set the desk top size in units of physical screen size
+DeskTopSize 2x2
+#DeskTopSize 1x1
+
+AddToMenu Sun-Menu "Sun Menu" Title
++  "binkley"   Exec xterm -T binkley   -e rlogin binkley
++  "fluffy"   Exec xterm -T fluffy   -e rlogin fluffy
++  "george"   Exec xterm -T george   -e rlogin george
++  "griffy"   Exec xterm -T griffy   -e rlogin griffy
++  "hodge"    Exec xterm -T hodge    -e rlogin hodge
++  "homer"    Exec xterm -T homer    -e rlogin homer
++  "huey"     Exec xterm -T huey     -e rlogin huey
++  "iss3"     Exec xterm -T iss3     -e rlogin iss3
++  "iss4"     Exec xterm -T iss4     -e rlogin iss4
++  "keller"   Exec xterm -T keller   -e rlogin keller
++  "krusty"   Exec xterm -T krusty   -e rlogin krusty
++  "lblconf"  Exec xterm -T lblconf  -e rlogin lblconf
++  "louie"    Exec xterm -T louie    -e rlogin louie
++  "oliver"   Exec xterm -T oliver   -e rlogin oliver
++  "otis"     Exec xterm -T otis     -e rlogin otis
++  "portnoy"  Exec xterm -T portnoy  -e rlogin portnoy
++  "rocky"    Exec xterm -T rocky    -e rlogin rocky
++  "scott"    Exec xterm -T scott    -e rlogin scott
++  "smithers" Exec xterm -T smithers -e rlogin smithers
++  "taz"      Exec xterm -T taz      -e rlogin taz
++  "wakko"    Exec xterm -T wakko    -e rlogin wakko
++  "yacko"    Exec xterm -T yacko    -e rlogin yacko
++  "SunOS"    Title
++  "eubie"    Exec xterm -T eubie    -e rlogin eubie
++  "gracie"   Exec xterm -T gracie   -e rlogin gracie
++  "chronos1" Exec xterm -T chronos1   -e rlogin chronos1
+ 
+AddToMenu BSD-Menu "BSD Menu" Title
++  "apollo"  Exec xterm -T apollo  -e rlogin apollo
++  "beetle"  Exec xterm -T beetle  -e rlogin beetle
++  "doright" Exec xterm -T doright -e rlogin doright
++  "elmyra"  Exec xterm -T elmyra  -e rlogin elmyra
++  "fuzz"    Exec xterm -T fuzz    -e rlogin fuzz
++  "iss-p1"  Exec xterm -T iss-p1  -e rlogin iss-p1
++  "iss-p2"  Exec xterm -T iss-p2  -e rlogin iss-p2
++  "killer"  Exec xterm -T killer  -e rlogin killer
++  "pesto"   Exec xterm -T pesto   -e rlogin pesto
++  "snorkel" Exec xterm -T snorkel -e rlogin snorkel
+ 
+AddToMenu OSF-Menu "OSF Menu" Title
++  "iss1"      Exec xterm -T iss1 -e rlogin iss1
++  "iss2"      Exec xterm -T iss1 -e rlogin iss2
++  "iss5"      Exec xterm -T iss5 -e rlogin iss5
++  "iss6"      Exec xterm -T iss1 -e rlogin iss6
++  "antigone"  Exec xterm -T antigone -e rlogin antigone
+ 
+AddToMenu Irix-Menu "Irix Menu" Title
++  "hagar" Exec xterm -T hagar -e rlogin hagar
++  "slappy" Exec xterm -T slappy -e rlogin slappy
+ 
+AddToMenu Remote-Xterms "Remote Xterm" Title
++  "Sun"    Popup Sun-Menu
++  "BSD"    Popup BSD-Menu
++  "OSF"    Popup OSF-Menu
++  "Irix"   Popup Irix-Menu
++  "ux10 (LETS)"   Exec xterm -T ux10 -e telnet ux10
+
+# The Root Menu to be bound to Mouse 1 in the root window
+#AddToMenu Root-Menu "Root Menu" Title
+#+  "Xterms"     Popup Xterm-Menu
+#+  "Modules"    Popup Fvwm-Modules
+#+  "Fvwm Menu"  Popup Fvwm-Menu
+
+
+############################################################################
+# Menu style
+MenuStyle maroon grey80 grey60 -adobe-helvetica-medium-r-*-*-*-120-*-*-*-*-*-* fvwm
+
+############################################################################
+# set up the default style
+Style "*"		Color Black/#60a0c0
+Style "*"		SmartPlacement, SloppyFocus
+#Style "*"		IconBox 10 -10 280 -1
+Style "*"               DecorateTransient,IconBox 5 210 100 1024
+Style "*"		MWMButtons, MWMFunctions, MWMDecor, HintOverride
+Style "*"		BorderWidth 3, HandleWidth 5
+Style "*"		Icon rterm.xpm
+
+# styles for internal fvwm stuff
+Style "Fvwm*"		NoTitle, NoHandles, Sticky, WindowListSkip
+Style "Fvwm*"		BorderWidth 0, CirculateSkipIcon
+Style "Fvwm*"		ClickToFocus
+
+Style "FvwmPager"	StaysOnTop
+Style "FvwmButtons"	NoTitle, NoHandles, Sticky, WindowListSkip
+Style "FvwmButtons"	BorderWidth 0, CirculateSkip
+Style "FvwmButtons"	Icon toolbox.xpm
+
+Style "FvwmBanner"  StaysOnTop
+
+############################################################################
+############################################################################
+# stlyles for everything else
+Style "xbiff"		NoTitle, NoHandles, Sticky, WindowListSkip, ClickToFocus
+Style "*lock"		NoTitle, NoHandles, Sticky, WindowListSkip, ClickToFocus
+Style "exmh"		Sticky
+Style "netscape"	Sticky
+Style "rxvt"		Icon xterm.xpm
+Style "XTerm"		Icon xterm.xpm
+Style "xcalc"		Icon xcalc.xpm, NoButton 2
+Style "xman"		Icon xman.xpm
+Style "xmag"		Icon mag_glass.xpm
+Style "xgraph"		Icon graphs.xpm
+Style "executor"	NoTitle, NoHandles
+Style "Untitled"	NoTitle, NoHandles
+
+############################################################################
+# Keyboard Bindings
+############################################################################
+# these mess up framemaker
+#Key Left	A	C	Scroll -100 0
+#Key Right	A	C	Scroll +100 +0
+#Key Up		A	C	Scroll +0   -100
+#Key Down	A	C	Scroll +0   +100
+
+# Useful olwm type things for Sun keyboards.
+Key L5                IW      N       RaiseLower
+Key L5                IW      S       Lower
+Key L5                IW      C       Raise
+Key L7                IW      A       Iconify
+
+############################################################################
+# Mouse Bindings
+############################################################################
+# Root Window mouse
+# left button brings up a list of Applications
+# middle button brings up a list of Window commands
+# right button brings up a window list
+# button, context, modifiers, function
+Mouse 1	R   	A       Menu App-Menu Nop
+Mouse 2	R    	A      	Menu Window-Ops Nop
+Mouse 3	R    	A      	WindowList
+
+# Title Bar Buttons
+# left title bar button brings up menu on click, closes on double click
+# far right button does a full maximize
+# near right button iconifies
+Mouse 0	1    	A      	Menu Window-Ops2 Close
+Mouse 0	2    	A     	Maximize 100 100
+Mouse 0	4    	A     	Iconify
+
+# Title bar
+# left button raises, on drag it moves
+# rightt button lowers, on drag it moves
+Mouse 1	T	A	Move-or-Iconify-Raise-Func
+Mouse 3	T	A	Move-or-Iconify-Lower-Func
+
+# Sidebars and Frames
+# left button raises, on drag it resizes
+# rightt button lowers, on drag it resizes
+Mouse 1	FS	A	Resize-Raise-Func
+Mouse 3	FS	A	Resize-Lower-Func
+
+# Main Window
+# Meta left click raises window
+# Meta right click lowers
+Mouse 1 W	M	Raise
+Mouse 3	W       M       Lower
+
+# Iconic
+# Left button moves on drag and un-iconifies on double click
+# Right button moves
+Mouse 1	I	A	Move-or-Iconify
+Mouse 3	I	A	Move
+
+############################################################################
+# Function Definitions
+############################################################################
+
+############################################################################
+# Initialization Functions
+
+# Run on start (not restart)
+AddToFunc InitFunction	"I" Module FvwmButtons
++			"I" Module FvwmPager 0 0
++			"I" exec xsetroot -solid MidnightBlue
+
+# Run on restart
+AddToFunc RestartFunction "I" Module FvwmButtons
++			"I" Module FvwmPager 0 0
+
+############################################################################
+# Handy Complex Functions
+
+# Auto-raise, resize on motion
+AddToFunc Resize-Raise-Func	"I" Raise
++				"M" Resize
+
+# Auto-lower, resize on motion
+AddToFunc Resize-Lower-Func	"I" Lower
++				"M" Resize
+
+# Auto-raise, move on motion, iconify on double-click
+AddToFunc Move-or-Iconify-Raise-Func	"I" Raise
++					"M" Move
++					"D" Iconify
+
+# Auto-Lower, move on motion, iconify on double-click
+AddToFunc Move-or-Iconify-Lower-Func	"I" Lower
++					"M" Move
++					"D" Iconify
+
+# Move on motion, iconify on double-click
+AddToFunc Move-or-Iconify	"M" Move
++				"D" Iconify
+
+# Auto-raise then print
+AddToFunc PrintFunction		"I" Raise
++				"I" Exec xdpr -id $w
+
+############################################################################
+# Menu Definitions
+############################################################################
+
+############################################################################
+# Commonly used applications
+# This menu will fire up some very common utilities
+AddToMenu App-Menu	"App-Menu"		Title
++			""			Nop
++			"Xterm"		        Exec xterm &
++			"Remote Xterms"		Popup Remote-Xterms
++			"Rxvt"			Exec rxvt -font 7x14 &
++			""			Nop
++			"netscape"		Exec netscape -iconic &
++			"exmh"		Exec rsh george exmh -iconic -display $HOSTDISPLAY &
++			"calculator"		Exec dtcalc &
++			""			Nop
++			"Applications"		Popup Apps-Popup
++			""			Nop
++			"Utilities"		Popup Utilites
++			""			Nop
++			"Fvwm Modules"		Popup Module-Popup
++			""			Nop
++			"Exit Fvwm"		Popup Quit-Verify
+
+############################################################################
+# Heavily used applications
+AddtoMenu Apps-Popup	"Applications"		Title
++			""			Nop
++			"Internet Stuff"	Popup	Net-Popup
++			""			Nop
++			"Graphics/Sound"	Popup	Graphics
++			""			Nop
++			"Programming"		Popup	Programming
++			""			Nop
+
+############################################################################
+# Internet `Surfing' apps
+AddToMenu Net-Popup	"Internet Utilities"	Title
++			""			Nop
++			"Netscape"		Exec netscape -iconic &
++			"XViewNews"		Exec xvnews &
++			"X3270 Telnet"		Exec x3270 &
++			"LLNL Ftp"		Exec xftp -geometry 800x600 &
+
+############################################################################
+# Graphics and sound manipulation
+AddToMenu Graphics	"Graphics"		Title
++			""			Nop
++			"XV 3.01"		Exec xv &
++			"XPaint"		Exec xpaint &
++			"Magnifying Glass"	Exec xmag &
++			"XFig"			Exec xfig &
++			"Fractint"		Exec xfractint &
++			"Sound"			Title
++			"Motif Audio CD Player"	Exec xmcd &
++			"Workman (CD Player)"	Exec workman &
++			"RPlayTool"		Exec rplaytool &
++			"XVmixer"		Exec xvmixer &
+
+############################################################################
+# Programming Tools
+AddtoMenu Programming	"Programming"		Title
++			""			Nop
++			"Sparcworks"	Exec sparcworks &
++			"Sun Debugger"	Exec debugger &
++			"X Windows GNU Debugger"	Exec xxgdb &
+
+############################################################################
+# Handy utilities
+AddToMenu Utilites	"Utilities"		Title
++			""			Nop
++			"Save Desktop"		Module	FvwmSaveDesk
++			"Window Identify"	Module	FvwmIdent
++			"Window List"		Module	FvwmWinList
++			""			Nop
++			"Manual Pages"		Exec xman &
++			"Memory Info"		Exec meminfo &
++			"Calculator"		Exec xcalc &
++			"Clock"			Exec oclock &
+
+############################################################################
+# Fvwm Modules
+AddToMenu Module-Popup	"Modules"	Title	
++			""		Nop
++			"Button-Bar"	Module	FvwmButtons
++			"Clean-Up"	Module	FvwmClean
++			"Debug"		Module	FvwmDebug
++			"Background"	Module  FvwmBacker
++			"Pager"		Module  FvwmPager 0 0
++			"IconBox"	Module	FvwmIconBox
++			"Banner"	Module	FvwmBanner
++			"Talk"  	Module	FvwmTalk
++			"Prompt"	Module	FvwmPrompt "hello" raise
+
+############################################################################
+# Exit menu
+AddToMenu Quit-Verify	"Really Quit?"	Title	
++			""		Nop
++			"Really Quit"	Quit	
++			"Restart Fvwm"	Restart fvwm	
++			""		Nop
++			"Start twm"	Restart twm
++			"Start mwm"	Restart /usr/openwin/bin/olwm
++			"Start CDE"	Restart /usr/dt/bin/dtwm
++			"Start dummy"	Restart xterm
++			""		Nop	
++			"Don't Quit"	Nop	
+
+############################################################################
+# Generic window ops
+AddToMenu Window-Ops	"Window Ops"	Title		
++			"Move"		Move
++			"Resize"	Resize
++			"Raise"		Raise
++			"Lower"		Lower 
++		 	"(De)Iconify"	Iconify
++			"(Un)Stick"	Stick		
++			""		Nop  
++			"Close"		Close	 
++			""		Nop		
++			"Refresh Screen" Refresh		
++			""		Nop		
++			"Destroy"	Destroy
+
+############################################################################
+# Specific window ops
+AddToMenu Window-Ops2	"Move"		Move
++			"Resize"	Resize
++			"Raise"		Raise   	
++			"Lower"		Lower   	
++			"Iconify"	Iconify 	
++			"(Un)Stick"	Stick		
++			""		Nop     	
++			"Close"		Close	  	
++			""		Nop 		
++			"ScrollBar" 	Module FvwmScroll 2 2	
++			"Destroy"	Destroy 	
++			"Print"         PrintFunction
+
+############################################################################
+# Module Definitions
+############################################################################
+
+############################################################################
+# FvwmButtons (the button bar)
+# Colors
+*FvwmButtonsFore Black
+*FvwmButtonsBack BlanchedAlmond
+
+# Font
+#*FvwmButtonsFont fixed
+*FvwmButtonsFont -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+
+# Geometry - really likes to pick its own size, but giving a position is OK
+#*FvwmButtonsGeometry -1+1
+#*FvwmButtonsGeometry 210x70+0+0
+*FvwmButtonsGeometry 80x300+1066+460
+ 
+# Setup Buttons
+ 
+# Layout: specify rows or columns, not both
+*FvwmButtonsColumns 1
+#*FvwmButtonsRows 1
+
+*FvwmButtons Kill         rbomb.xpm       Destroy
+*FvwmButtons Move         arrows2.xpm     Move
+*FvwmButtons Resize  resize.xpm  Resize
+*FvwmButtons Close         rbomb.xpm       Close
+
+*FvwmButtons xterm        xterm.xpm       Exec "xterm" xterm &
+*FvwmButtons Netscape    xterm.xpm       Exec "Netscape" netscape -iconic &
+*FvwmButtons Frame       xterm.xpm       Exec "maker" maker &
+*FvwmButtons calc        xcalc.xpm       Exec "Calculator" dtcalc &
+*FvwmButtons Portnoy  rterm.xpm   Exec "" rsh portnoy "exec xterm -T portnoy -display $HOSTDISPLAY </dev/null >&/dev/null & "&
+*FvwmButtons George  rterm.xpm   Exec "" rsh george "exec xterm -T george -display $HOSTDISPLAY </dev/null >&/dev/null & "&
+*FvwmButtons pesto  rterm.xpm   Exec "" rsh pesto "exec xterm -T pesto -display $HOSTDISPLAY </dev/null >&/dev/null & "&
+*FvwmButtons exmh  rterm.xpm   Exec "" rsh george "exec exmh -iconic -display $HOSTDISPLAY </dev/null >&/dev/null & "&
+
+# combine Pager into Buttons module
+#*FvwmButtons - Desktops SwallowModule "Fvwm Pager" FvwmPager 0 3
+#*FvwmButtons - Desktops SwallowModule "Fvwm Pager" 0 1 
+
+############################################################################
+# FvwmNoClutter (clears up windows)
+# I only wrote NoClutter as a simple test case, but maybe some big sites like
+# universities really have usage problems (too many open windows)....
+# Time delays are in seconds.
+*FvwmNoClutter 3600 Iconify 1
+*FvwmNoClutter 86400 Delete
+*FvwmNoCLutter 172800 Destroy
+
+############################################################################
+# FvwmClean (same as FvwmNoClutter)
+*FvwmClean 36000 Iconify 1
+*FvwmClean 86400 Iconify -1
+*FvwmClean 172800 Move 100p 100p
+
+############################################################################
+# FvwmIdent (Window Identifier)
+# Just choose colors and a fonts
+*FvwmIdentBack MidnightBlue
+*FvwmIdentFore Yellow
+*FvwmIdentFont -adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+
+############################################################################
+# FvwmPager (Virtual Desktop)
+*FvwmPagerBack #908090
+*FvwmPagerFore #484048
+*FvwmPagerFont -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+*FvwmPagerHilight #cab3ca
+*FvwmPagerGeometry -1-1
+#*FvwmPagerLabel 0 LBNL
+#*FvwmPagerLabel 1 Remote
+#*FvwmPagerLabel 2 System
+#*FvwmPagerLabel 3 Misc
+*FvwmPagerSmallFont 5x8
+
+
+############################################################################
+# FvwmWinList (Window List)
+*FvwmWinListBack #908090
+*FvwmWinListFore Black
+*FvwmWinListFont -adobe-helvetica-bold-r-*-*-10-*-*-*-*-*-*-*
+*FvwmWinListAction Click1 Iconify -1,Focus
+*FvwmWinListAction Click2 Iconify
+*FvwmWinListAction Click3 Module "FvwmIdent" FvwmIdent
+*FvwmWinListUseSkipList
+*FvwmWinListGeometry +0-1
+                                      
+
+############################################################################
+# FvwmBacker (Changes background depending on desktop)
+*FvwmBackerDesk 0 -solid steelblue
+*FvwmBackerDesk 1 -solid midnightblue
+
+############################################################################
+# FvwmScroll (ScrollBar)
+*FvwmScrollBack grey40
+*FvwmScrollFore green
+	
+############################################################################
+# FvwmIconBok (Iconize to Box instead of Desktop)
+# If you are going to use this, set `Style "*" NoIcon'
+*FvwmIconBoxIconBack	#cfcfcf
+*FvwmIconBoxIconHiFore	black
+*FvwmIconBoxIconHiBack	LightSkyBlue
+*FvwmIconBoxBack	#5f9ea0
+*FvwmIconBoxFore	blue
+*FvwmIconBoxGeometry	5x1+0+0
+*FvwmIconBoxMaxIconSize	64x38
+*FvwmIconBoxFont	-adobe-helvetica-medium-r-*-*-12-*-*-*-*-*-*-*
+*FvwmIconBoxSortIcons
+*FvwmIconBoxPadding	4
+*FvwmIconBoxLines	10
+*FvwmIconBoxPlacement	Left Top
+#
+# mouse bindings
+#
+*FvwmIconBoxMouse	1 Click		RaiseLower
+*FvwmIconBoxMouse	1 DoubleClick	Iconify
+*FvwmIconBoxMouse	2 Click		Iconify -1, Focus
+*FvwmIconBoxMouse	3 Click		Module FvwmIdent
+#
+# Key bindings
+#
+*FvwmIconBoxKey		r	RaiseLower
+*FvwmIconBoxKey		space	Iconify
+*FvwmIconBoxKey		d	Close
+#
+# FvwmIconBox built-in functions
+#
+*FvwmIconBoxKey		n	Next
+*FvwmIconBoxKey		p	Prev
+*FvwmIconBoxKey		h	Left
+*FvwmIconBoxKey		j	Down
+*FvwmIconBoxKey		k	Up
+*FvwmIconBoxKey		l	Right
+#
+# Icon file spcifications
+#
+*FvwmIconBox		"*"		unknown1.xpm
+*FvwmIconBox		"Fvwm*"		-
+*FvwmIconBox		"rxvt"		term.xpm
+*FvwmIconBox		"xterm"		xterm.xpm
+*FvwmIconBox		"editres"	editres.xpm
+*FvwmIconBox		"xman"		xman.xpm
+*FvwmIconBox		"xbiff"		mail1.xpm
+*FvwmIconBox		"xmh"		mail1.xpm
+*FvwmIconBox		"xcalc"		xcalc.xpm
+*FvwmIconBox		"FvwmButtons"	toolbox.xpm

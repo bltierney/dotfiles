@@ -1,3 +1,13 @@
+To use these files:
+
+git pull git@github.com:bltierney/dotfiles.git
+cp cshrc $HOME/.cshrc
+cp exrc $HOME/.exrc
+ln -s $HOME/.cshrc $HOME/.tcshrc
+
+
+Below is the orginal README from LBL computing services
+=======================================================
 The environ Files
 -----------------
 
@@ -121,8 +131,3 @@ one add the line:
 
 to ~/.rc/user_env.
 
-11. I have a great idea that would make these dot files better, what
-do I do?  Send them to me, my email address is SLShen@lbl.gov.
-
-----------
-$Id: README,v 1.8 1995/06/07 21:28:27 sls Exp $

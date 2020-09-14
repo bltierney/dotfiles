@@ -12,6 +12,12 @@ set my_proc = `uname \-p`
 
 switch ("$ARCH")
 
+case "Darwin*":
+    if ($?prompt) echo "  This is a OSX System"
+    set path = (. $HOME/bin.osx $HOME/scripts \
+	 /usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin)
+    breaksw
+
 case "BSD/OS*":
 case "FreeBSD*":
     if ($?prompt) echo "  This is a BSD System"
