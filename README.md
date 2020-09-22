@@ -1,6 +1,6 @@
 To use these files:
 
-git clone git@github.com:bltierney/dotfiles.git
+git clone https://github.com/bltierney/dotfiles.git
 cp cshrc $HOME/.cshrc
 cp exrc $HOME/.exrc
 ln -s $HOME/.cshrc $HOME/.tcshrc
