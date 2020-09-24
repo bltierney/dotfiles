@@ -4,15 +4,17 @@ git clone https://github.com/bltierney/dotfiles.git
 mkdir $HOME/scripts
 mkdir $HOME/.rc
 cp dotfiles/* $HOME/.rc
-cp dotfiles/cshrc $HOME/.cshrc
-cp dotfiles/exrc $HOME/.exrc
+ln -s dotfiles/cshrc $HOME/.cshrc
+ln -s dotfiles/exrc $HOME/.exrc
 ln -s $HOME/.cshrc $HOME/.tcshrc
-cp dotfiles/tpack $HOME/scripts
-cp dotfiles/tunpack $HOME/scripts
+ln -s $HOME/scripts/tpack dotfiles/tpack
+ln -s $HOME/scripts/tunpack dotfiles/tunpack
 
+==================================================================================================
 
 Below is the orginal README from LBL computing services. Several of the files are not included here.
 These scripts assume using tcsh as the shell.
+
 ===================================================================================================
 The environ Files
 -----------------
