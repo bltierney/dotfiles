@@ -2,13 +2,14 @@ To use these files:
 
 git clone https://github.com/bltierney/dotfiles.git
 mkdir $HOME/scripts
-mkdir $HOME/.rc
-cp dotfiles/* $HOME/.rc
+ln -s dotfiles $HOME/.rc
 ln -s dotfiles/cshrc $HOME/.cshrc
 ln -s dotfiles/exrc $HOME/.exrc
 ln -s $HOME/.cshrc $HOME/.tcshrc
 ln -s $HOME/scripts/tpack dotfiles/tpack
 ln -s $HOME/scripts/tunpack dotfiles/tunpack
+
+You can periodically to a 'git pull' to make sure these files are up to date.
 
 ==================================================================================================
 
