@@ -1,12 +1,14 @@
 To use these files:
 
 git clone https://github.com/bltierney/dotfiles.git
-cp cshrc $HOME/.cshrc
-cp exrc $HOME/.exrc
-ln -s $HOME/.cshrc $HOME/.tcshrc
 mkdir $HOME/scripts
-cp tpack $HOME/scripts
-cp tunpack $HOME/scripts
+mkdir $HOME/.rc
+cp dotfiles/* $HOME/.rc
+cp dotfiles/cshrc $HOME/.cshrc
+cp dotfiles/exrc $HOME/.exrc
+ln -s $HOME/.cshrc $HOME/.tcshrc
+cp dotfiles/tpack $HOME/scripts
+cp dotfiles/tunpack $HOME/scripts
 
 
 Below is the orginal README from LBL computing services. Several of the files are not included here.
