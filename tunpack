@@ -1,0 +1,25 @@
+#! /bin/sh
+#
+# set -x  for debugging
+#
+# tunpack dirname
+# uncompress and untar a directory of files
+#
+for dname in "$@"
+do
+    if [ -d $dname ]
+    then
+       echo $dname is not a tarred file
+       continue
+    fi
+    if [ ! -f $dname ]
+    then
+         dname=$dname.tar.Z
+    fi
+    if [ ! -f $dname ]
+    then
+       echo "Cannot find file "$dname
+       continue
+    fi
+    zcat $dname | tar -xvf -
+done

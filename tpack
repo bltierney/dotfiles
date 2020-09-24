@@ -1,0 +1,14 @@
+#! /bin/sh
+# tpack dirname
+# tar a directory of files and compress
+#
+for dname in "$@"
+do
+    if [ ! -d $dname ]
+    then
+       echo $dname is not a directory
+       continue
+    fi
+    echo "taring and compressing all files in "$dname
+    tar -cvf - $dname | gzip > $dname.tar.gz
+done
