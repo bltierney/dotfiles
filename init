@@ -19,6 +19,7 @@ echo_source $HOME/.rc/env
 if ($interactive) then
 
 	echo_source $HOME/.rc/aliases
+	echo_source $HOME/.rc/user_path
 
 	if ( -e $HOME/.rc/dirs ) then
 		echo_source $HOME/.rc/dirs
